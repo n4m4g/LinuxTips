@@ -1,4 +1,4 @@
-ssh, git and vim configuration
+Linux configuration
 -------------------------
 
 Contents
@@ -7,6 +7,7 @@ Contents
     - [ssh](#ssh)
     - [Git](#git)
     - [Vim](#vim)
+    - [apt mirror](#apt-mirror)
 
 Configuration
 -------------
@@ -62,3 +63,11 @@ Add following commands to ~/.vimrc
     set nu
     set hlsearch
     "set expandtab
+
+### apt mirror
+
+    #!/bin/bash
+
+    # replace the mirror as nchc
+    LINK=`cat /etc/apt/sources.list | grep main | awk '{ print $2 }' | cut -d'/' -f3 | sed -n '3P'`
+    sudo sed -i 's/${LINK}/free.nchc.org.tw/g' /etc/apt/sources.list
