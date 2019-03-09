@@ -3,22 +3,28 @@ Linux tips
 
 Contents
 --------
-- [Configuration](#configuration)
-    - [ssh](#ssh)
-    - [git](#git)
-    - [vim](#vim)
-    - [apt mirror](#apt-mirror)
 
-Configuration
--------------
+- [ssh](#ssh)
+    - [Generate ssh key](#generate-ssh-key)
+    - [Set ssh alive](#set-ssh-alive)
+    - [Set ssh alias](#set-ssh-alias)
+- [git](#git)
+- [vim](#vim)
+- [apt mirror](#apt-mirror)
+- [terminal shortcut](#terminal-shortcut)
+- [docker](#docker)
+    - [Show docker images](#show-docker-images)
+    - [Show all containers](#show-all-containers)
+    - [Enter the container](#enter-the-container)
 
-### ssh
+ssh
+---
 
-**Generate ssh key**
+### Generate ssh key
 
     $ ssh-keygen -t rsa -C <email> -b 4096
     
-**Set ssh alive**
+### Set ssh alive
 
 Add follow command to ~/.ssh/config
 
@@ -29,7 +35,7 @@ and
 
     $ chmod 600 ~/.ssh/config
 
-**Set ssh alias**
+### Set ssh alias
 
 Add following commands to ~/.ssh/config
 
@@ -46,7 +52,8 @@ Add following commands to ~/.ssh/config
         User <uname>
         ProxyCommand ssh <proxy name> -W %h:%p
 
-### git
+git
+---
 
     $ git config --global user.name "<name>"
     $ git config --global user.email <email>
@@ -54,7 +61,8 @@ Add following commands to ~/.ssh/config
     $ git config --global alias.ci commit
     $ git config --global alias.st status
 
-### vim
+vim
+---
 
 Add following commands to ~/.vimrc
 
@@ -64,9 +72,10 @@ Add following commands to ~/.vimrc
     set hlsearch
     "set expandtab
 
-### apt mirror
+apt mirror
+----------
 
-save the following commands as foo.sh
+Save the following commands as foo.sh
 
     #!/bin/bash
 
@@ -76,4 +85,27 @@ save the following commands as foo.sh
 
 and
 
-    source foo.sh
+    $ source foo.sh
+
+terminal shortcut
+-----------------
+
+- ctrl + U: Clear **whole** command line.
+- ctrl + W: Clear words to the **left** of the cursor
+- ctrl + K: Clear words to the **right** of the cursor
+- ctrl + L: Clear words **above** the cursor.
+
+docker
+------
+
+### Show docker images
+
+    $ docker images
+
+### Show all containers
+
+    $ docker ps -a
+
+### Enter the container
+
+    $ docker exec -it <container id> bash
