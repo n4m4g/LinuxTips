@@ -108,4 +108,4 @@ docker
 
 ### Enter the container
 
-    $ docker exec -it <container id> bash
+    $ docker exec -e LANG=en_US.UTF-8 -e LC_ALL=en_US.UTF-8 --user <uname> -it <container id> bash
