@@ -5,8 +5,8 @@ Contents
 --------
 - [Configuration](#configuration)
     - [ssh](#ssh)
-    - [Git](#git)
-    - [Vim](#vim)
+    - [git](#git)
+    - [vim](#vim)
     - [apt mirror](#apt-mirror)
 
 Configuration
@@ -46,7 +46,7 @@ Add following commands to ~/.ssh/config
         User <uname>
         ProxyCommand ssh <proxy name> -W %h:%p
 
-### Git
+### git
 
     $ git config --global user.name "<name>"
     $ git config --global user.email <email>
@@ -54,7 +54,7 @@ Add following commands to ~/.ssh/config
     $ git config --global alias.ci commit
     $ git config --global alias.st status
 
-### Vim
+### vim
 
 Add following commands to ~/.vimrc
 
