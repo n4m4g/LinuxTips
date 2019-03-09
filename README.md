@@ -1,4 +1,4 @@
-Linux configuration
+Linux tips
 -------------------------
 
 Contents
@@ -66,8 +66,14 @@ Add following commands to ~/.vimrc
 
 ### apt mirror
 
+save the following commands as foo.sh
+
     #!/bin/bash
 
     # replace the mirror as nchc
     LINK=`cat /etc/apt/sources.list | grep main | awk '{ print $2 }' | cut -d'/' -f3 | sed -n '3P'`
     sudo sed -i 's/${LINK}/free.nchc.org.tw/g' /etc/apt/sources.list
+
+and
+
+    source foo.sh
