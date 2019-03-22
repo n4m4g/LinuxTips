@@ -8,6 +8,7 @@ Contents
     - [Generate ssh key](#generate-ssh-key)
     - [Set ssh alive](#set-ssh-alive)
     - [Set ssh alias](#set-ssh-alias)
+    - [ssh without password](#ssh-without-password)
 - [git](#git)
 - [vim](#vim)
 - [apt mirror](#apt-mirror)
@@ -51,6 +52,12 @@ Add following commands to ~/.ssh/config
         Hostname <server name>
         User <uname>
         ProxyCommand ssh <proxy name> -W %h:%p
+
+### ssh without password
+
+    $ scp ~/.ssh/id_rsa.pub <server_hostname>:~/.ssh/<new_name.pub>
+    $ ssh <server_hostname>
+    $ cat ~/.ssh/<new_name.pub> >> ~/.ssh/authorized_keys
 
 git
 ---
