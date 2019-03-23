@@ -17,6 +17,8 @@ Contents
     - [Show docker images](#show-docker-images)
     - [Show all containers](#show-all-containers)
     - [Enter the container](#enter-the-container)
+- [ncdu](#ncdu)
+    - [List recursive file sizes of files and directories in a directory](#ncdu-detail)
 
 ssh
 ---
