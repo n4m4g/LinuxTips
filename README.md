@@ -18,7 +18,7 @@ Contents
     - [Show all containers](#show-all-containers)
     - [Enter the container](#enter-the-container)
 - [ncdu](#ncdu)
-    - [List recursive file sizes of files and directories in a directory](#ncdu-detail)
+    - [List recursive file sizes of files and directories in a directory](#list-recursive-file-sizes-of-files-and-directories-in-a-directory)
 
 ssh
 ---
