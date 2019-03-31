@@ -20,6 +20,9 @@ Contents
 - [ncdu](#ncdu)
     - [List recursive file sizes of files and directories in a directory](#list-recursive-file-sizes-of-files-and-directories-in-a-directory)
 
+- [ethtool](#ethtool)
+    - [Change ethernet connection speed](#change-ethernet-connection-speed)
+
 ssh
 ---
 
@@ -125,3 +128,13 @@ ncdu
 ### List recursive file sizes of files and directories in a directory
 
     $ ncdu
+
+ethtool
+-------
+
+### Change ethernet connection speed
+
+eth0 is the network card name from command `$ ifconfig`
+
+    $ sudo apt-get install ethtool
+    $ sudo ethtool -s eth0 speed 100 duplex full
