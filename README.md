@@ -1,5 +1,5 @@
 Linux tips
--------------------------
+==========
 
 Contents
 --------
@@ -82,6 +82,8 @@ Add following commands to ~/.vimrc
     set shiftwidth=4
     set nu
     set hlsearch
+    set smartindent
+    set scrolloff=5
     "set expandtab
 
 apt mirror
