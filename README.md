@@ -257,3 +257,6 @@ ${color}${top name 4} $alignr ${top pid 4} ${top cpu 4} ${top mem 4}
 
 ]]
 ~~~~
+
+![conky preview](imgs/conky_preview.png)
+
