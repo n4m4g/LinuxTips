@@ -167,7 +167,6 @@ conky.config = {
 	default_color = 'white',
     default_outline_color = 'white',
     default_shade_color = 'white',
-	default_bar_size = 15,
     draw_borders = false,
     draw_graph_borders = true,
     draw_outline = false,
@@ -189,7 +188,7 @@ conky.config = {
     own_window_class = 'Conky',
     own_window_type = 'desktop',
 	own_window_argb_visual = true,
-	own_window_argb_value = 100,
+	own_window_argb_value = 80,
     stippled_borders = 0,
     update_interval = 1,
     uppercase = false,
@@ -216,11 +215,11 @@ conky.config = {
 --Core1 ${hwmon 4 temp 2}°C Core2 ${hwmon 4 temp 3}°C 
 --Core3 ${hwmon 4 temp 4}°C Core4 ${hwmon 4 temp 5}°C 
 --$nodename
+--${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-26}
 conky.text = [[
 $sysname $kernel on $machine
 ${color}Uptime:${color} $uptime
 $hr
-${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-26}
 ${color}FREQUENCY: ${freq}MHz / ${cpu cpu0}%
 ${color}TEMPERATURE: ${hwmon 4 temp 1}°C
 
@@ -230,6 +229,9 @@ CPU3 ${cpubar cpu3 16,100} ${if_match ${cpu cpu3}<10}${offset 10}${endif}${cpu c
 CPU5 ${cpubar cpu5 16,100} ${if_match ${cpu cpu5}<10}${offset 10}${endif}${cpu cpu5}% CPU6 ${cpubar cpu6 16,100} ${if_match ${cpu cpu6}<10}${offset 10}${endif}${cpu cpu6}%
 CPU7 ${cpubar cpu7 16,100} ${if_match ${cpu cpu7}<10}${offset 10}${endif}${cpu cpu7}% CPU8 ${cpubar cpu8 16,100} ${if_match ${cpu cpu8}<10}${offset 10}${endif}${cpu cpu8}%
 
+${color}BATTERY
+${color}${battery_time} $alignr ${battery}
+${color}${battery_bar 10}
 ${color}MEMORY 
 mem $alignc $mem / $memmax $alignr $memperc%
 ${membar 10}
@@ -240,13 +242,10 @@ ${color}FILE SYSTEM
 fs $alignc $fs_used / $fs_size $alignr $fs_used_perc%
 ${fs_bar 10}
 
-${color}NETWORK ${alignr}IP: ${addr enx00e04d6812e1}
-${color}Sending $alignr ${upspeed enx00e04d6812e1}/s
-${color}${upspeedgraph enx00e04d6812e1 40 ${color} ${color}}
-${color}Receiving $alignr ${downspeed enx00e04d6812e1}/s
-${color}${downspeedgraph enx00e04d6812e1 40 ${color} ${color}}
-${color}Total Sent: ${totalup enx00e04d6812e1}
-${color}Total Received: ${totaldown enx00e04d6812e1}
+${color}NETWORK(IP: ${addr wlp2s0})
+${color}Down: ${downspeed wlp2s0}/s $alignr Up: ${upspeed wlp2s0}/s
+${color}${downspeedgraph wlp2s0 40,220} ${upspeedgraph wlp2s0 40,220}
+${color}Total: ${totaldown wlp2s0} $alignr Total: ${totalup wlp2s0}
 
 ${color}PROCESSES
 ${color}Name $alignr PID   CPU% MEM%
