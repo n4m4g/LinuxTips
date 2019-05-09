@@ -21,6 +21,9 @@ Contents
     - [List recursive file sizes of files and directories in a directory](#list-recursive-file-sizes-of-files-and-directories-in-a-directory)
 - [ethtool](#ethtool)
     - [Change ethernet connection speed](#change-ethernet-connection-speed)
+- [virtualenv](#virtualenv)
+    - [Install virtualenv](#install-virtualenv)
+    - [Create a virtualenv](#create-a-virtualenv)
 - [conky](#conky)
     - [Install conky](#install-conky)
     - [Generate conky configuration template](#generate-conky-configuration-template)
@@ -143,6 +146,17 @@ eth0 is the network card name from command `$ ifconfig`
 
     $ sudo apt-get install ethtool
     $ sudo ethtool -s eth0 speed 100 duplex full
+
+virtualenv
+----------
+
+### Install virtualenv
+
+    $ pip3 install -U virtualenv
+    
+### Create a virtualenv
+
+    $ python3 -m virtualenv -p python3 [name]
 
 conky
 -----
