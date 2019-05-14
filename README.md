@@ -24,6 +24,11 @@ Contents
 - [virtualenv](#virtualenv)
     - [Install virtualenv](#install-virtualenv)
     - [Create a virtualenv](#create-a-virtualenv)
+- [The srt subtitle file is garbled](#the-srt-subtitle-file-is-garbled)
+    - [iconv](#iconv)
+- [tlp](#tlp)
+    - [Install tlp and reboot](#install-tlp-and-reboot)
+    - [Confirm that the service is enabled](#confirm-that-the-service-is-enabled)
 - [conky](#conky)
     - [Install conky](#install-conky)
     - [Generate conky configuration template](#generate-conky-configuration-template)
@@ -158,6 +163,25 @@ virtualenv
 
     $ python3 -m virtualenv -p python3 [name]
 
+The srt subtitle file is garbled
+--------------------------------
+
+### iconv
+
+    $ iconv -c -f big5 -t utf8 [old.srt] > [new.srt]
+
+tlp
+---
+
+### Install tlp and reboot
+
+    $ sudo apt install tlp
+    $ sudo shutdown -r now
+    
+### Confirm that the service is enabled
+
+    $ sudo systemctl status tlp
+
 conky
 -----
 
@@ -178,21 +202,21 @@ conky.config = {
     background = false,
     border_width = 1,
     cpu_avg_samples = 2,
-	default_color = 'white',
+    default_color = 'white',
     default_outline_color = 'white',
     default_shade_color = 'white',
     draw_borders = false,
     draw_graph_borders = true,
     draw_outline = false,
     draw_shades = false,
-	double_buffer = true,
+    double_buffer = true,
     use_xft = true,
     font = 'Monospace:size=12',
     gap_x = 10,
     gap_y = 10,
     minimum_height = 5,
-	minimum_width = 5,
-	maximum_width = 450,
+    minimum_width = 5,
+    maximum_width = 450,
     net_avg_samples = 2,
     no_buffers = true,
     out_to_console = false,
@@ -201,8 +225,8 @@ conky.config = {
     own_window = true,
     own_window_class = 'Conky',
     own_window_type = 'desktop',
-	own_window_argb_visual = true,
-	own_window_argb_value = 80,
+    own_window_argb_visual = true,
+    own_window_argb_value = 80,
     stippled_borders = 0,
     update_interval = 1,
     uppercase = false,
@@ -271,5 +295,5 @@ ${color}${top name 4} $alignr ${top pid 4} ${top cpu 4} ${top mem 4}
 ]]
 ~~~~
 
-![conky preview](imgs/conky_preview.png)
+<img src="imgs/conky_preview.png" alt="drawing" width="200"/>
 
