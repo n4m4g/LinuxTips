@@ -10,7 +10,9 @@ Contents
     - [Set ssh alias](#set-ssh-alias)
     - [ssh without password](#ssh-without-password)
 - [git](#git)
-- [vim](#vim)
+- [Vim](#vim)
+    - [Vim setting](#vim-setting)
+    - [Executing python code from Vim](#executing-python-code-from-vim)
 - [apt mirror](#apt-mirror)
 - [terminal shortcut](#terminal-shortcut)
 - [docker](#docker)
@@ -84,10 +86,12 @@ git
     $ git config --global alias.ci commit
     $ git config --global alias.st status
 
-vim
+Vim
 ---
 
-Add following commands to ~/.vimrc
+### Vim setting
+
+Add follow command to ~/.vimrc
 
     set tabstop=4
     set shiftwidth=4
@@ -96,6 +100,19 @@ Add following commands to ~/.vimrc
     set smartindent
     set scrolloff=5
     "set expandtab
+
+### Executing python code from Vim
+
+Add follow command to ~/.vimrc
+
+    # FileType python: Triggered when editing a file with a '.py' suffix
+    # nnoremap: Only valid in normal mode
+    # <buffer>: ?
+    # <F9>: keyboard shortcut
+    # exec: '!clear; python3 %'
+    # <cr>: carriage return, same as enter
+    # :help key-notation
+    autocmd FileType python nnoremap <buffer> <F9> :exec '!clear; python3 %'<cr>
 
 apt mirror
 ----------
