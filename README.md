@@ -31,6 +31,9 @@ Contents
 - [tlp](#tlp)
     - [Install tlp and reboot](#install-tlp-and-reboot)
     - [Confirm that the service is enabled](#confirm-that-the-service-is-enabled)
+- [Linux Mint System Setting not showing](#linux-mint-system-setting-not-showing)
+    - [Issue](#issue)
+    - [Downgrade pillow version](#downgrade-pillow-version)
 - [conky](#conky)
     - [Install conky](#install-conky)
     - [Generate conky configuration template](#generate-conky-configuration-template)
@@ -198,6 +201,27 @@ tlp
 ### Confirm that the service is enabled
 
     $ sudo systemctl status tlp
+
+Linux Mint System Setting not showing
+-------------------------------------
+
+### Issue
+
+    $ cinnamon-settings
+    Traceback (most recent call last):
+      File "/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py", line 619, in <module>
+        window = MainWindow()
+      File "/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py", line 247, in __init__
+        for module in modules:
+      File "/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py", line 5, in <module>
+        import imtools
+      File "/usr/share/cinnamon/cinnamon-settings/bin/imtools.py", line 623, in <module>
+        if Image.VERSION == '1.1.7':
+    AttributeError: module 'PIL.Image' has no attribute 'VERSION'
+    
+### Downgrade pillow version
+
+    $ pip3 install pillow==5.4.0
 
 conky
 -----
