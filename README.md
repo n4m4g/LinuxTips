@@ -39,6 +39,37 @@ Contents
     - [Generate conky configuration template](#generate-conky-configuration-template)
     - [Custom configuration](#custom-configuration)
 
+Nvidia drive
+------------
+
+### nvidia-smi not work
+
+    $ nvidia-smi
+    NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.
+    $ sudo prime-select nvidia
+    $ sudo prime-select intel
+    $ sudo prime-select nvidia
+    $ sudo reboot
+
+### add rule to disable nouveau
+
+    $ sudo vim /etc/modprobe.d/blacklist-nvidia-nouveau.conf
+    blacklist nouveau
+    options nouveau modeset=0
+    
+### fully remove nvidia driver
+
+    $ sudo apt purge nvidia*
+    $ sudo apt purge libnvidia*
+    $ dpkg -l | grep -i nvidia | awk '{print $2}' | xargs sudo dpkg -r
+    
+    # check whether left nvidia file
+    $ cd /usr/lib/
+    $ find -name "*nvidia*"
+    
+    $ sudo update-initramfs -u
+    $ sudo reboot
+
 ssh
 ---
 
