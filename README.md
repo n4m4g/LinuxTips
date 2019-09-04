@@ -70,6 +70,35 @@ Nvidia drive
     $ sudo update-initramfs -u
     $ sudo reboot
 
+cuda and cudnn
+--------------
+
+### cuda
+
+Download the cuda runfile to skip the driver installation
+
+### cudnn
+
+    $ tar -xzvf cudnn-*.tgz
+    $ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+    $ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+    $ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+    
+### ldconfig
+
+    $ sudo ldconfig 
+    /sbin/ldconfig.real: /usr/local/cuda/lib64/libcudnn.so.x is not a symbolic link
+
+    $ cd /usr/local/cuda/lib64
+    $ ls -lha libcudnn*
+
+    $ sudo rm libcudnn.so
+    $ sudo rm libcudnn.so.x
+    $ sudo ln libcudnn.so.x.y.z libcudnn.so.x
+    $ sudo ln libcudnn.so.x libcudnn.so
+    
+    $ sudo ldconfig
+
 ssh
 ---
 
