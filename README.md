@@ -172,6 +172,14 @@ git
     $ git config --global alias.ci commit
     $ git config --global alias.st status
 
+Set git pull auto rebase
+
+    $ vim ~/.gitconfig
+    
+    [branch]
+        autosetuprebase = always
+    
+
 Vim
 ---
 
