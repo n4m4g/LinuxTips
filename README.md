@@ -173,6 +173,7 @@ git
     git config --global alias.st status
     git config --global alias.co checkout
     git config --global alias.br branch
+    git config --list # show git config
 
 Set git pull auto rebase
 
