@@ -100,6 +100,21 @@ To install the driver using this installer, run the following command, replacing
 Logfile is /var/log/cuda-installer.log
 ```
 
+if you are going to install using the deb installer (which is what was installing 387 driver etc.) then you could just do:
+
+```
+sudo apt-get install cuda-toolkit-X-Y
+```
+
+instead of
+
+```
+sudo apt-get install cuda
+```
+
+and that should skip the driver install.
+
+
 ### cudnn
 
     $ tar -xzvf cudnn-*.tgz
