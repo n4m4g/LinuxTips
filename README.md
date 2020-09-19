@@ -259,10 +259,20 @@ docker
 ### Show all containers
 
     $ docker ps -a
+    
+### Add user to docker group
+
+    $ sudo usermod -aG docker $USER
+
+### Create container
+
+    $ docker run -it [image name] [shell]
+    $ docker run -it ubuntu bash
 
 ### Enter the container
 
-    $ docker exec -e LANG=en_US.UTF-8 -e LC_ALL=en_US.UTF-8 --user <uname> -it <container id> bash
+    $ docker exec -it <container id> bash
+    $ docker exec -it c357 bash
 
 ncdu
 ----
