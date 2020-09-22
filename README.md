@@ -137,6 +137,14 @@ and that should skip the driver install.
     
     $ sudo ldconfig
 
+### GPU fan speed control
+
+    $ sudo nvidia-xconfig
+    $ sudo nvidia-xconfig --cool-bits=28
+    
+    Restart the computer and search for NVIDIA X Server Settings in the Dash. 
+    There should be an option to change fan speed under Thermal Settings.
+
 ssh
 ---
 
