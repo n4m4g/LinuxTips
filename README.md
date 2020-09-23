@@ -108,9 +108,7 @@ Add following commands to ~/.ssh/config
 
 ### ssh without password
 
-    $ scp ~/.ssh/id_rsa.pub <server_hostname>:~/.ssh/<new_name.pub>
-    $ ssh <server_hostname>
-    $ cat ~/.ssh/<new_name.pub> >> ~/.ssh/authorized_keys
+    $ ssh-copy-id <host name>
 
 git
 ---
