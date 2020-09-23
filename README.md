@@ -113,6 +113,8 @@ Add following commands to ~/.ssh/config
 git
 ---
 
+### git command alias
+
     git config --global user.name "<name>"
     git config --global user.email <email>
     git config --global core.editor vim
@@ -126,7 +128,7 @@ git
 vim
 ---
 
-### Vim setting
+### Setting
 
 Add follow command to ~/.vimrc
 
