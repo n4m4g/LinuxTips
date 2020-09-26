@@ -3,17 +3,16 @@ Linux tips
 
 Contents
 --------
-
-- [Nvidia](#Nvidia)
+- [nvidia](#nvidia)
 - [ssh](#ssh)
 - [git](#git)
 - [vim](#vim)
 - [terminal shortcut](#terminal-shortcut)
 - [docker](#docker)
-- [ncdu](#ncdu)
 - [virtualenv](#virtualenv)
+- [apt tools](#apt-tools)
 
-Nvidia
+nvidia
 ------
     
 ### Remove nvidia driver
@@ -173,13 +172,6 @@ docker
     $ docker exec -it <container id> bash
     $ docker exec -it c357 bash
 
-ncdu
-----
-
-### List recursive file sizes of files and directories in a directory
-
-    $ ncdu
-
 virtualenv
 ----------
 
@@ -190,3 +182,9 @@ virtualenv
 ### Create a virtualenv
 
     $ python3 -m virtualenv -p python3 [name]
+
+apt tools
+---------
+
+    $ sudo apt install ncdu # NCurses Disk Usage
+    $ sudo apt install pragha # support m4a format
