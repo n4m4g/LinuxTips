@@ -109,6 +109,16 @@ if __name__ == "__main__":
     main()
 ```
 
+Example output
+```
+Start...                                                                                                  
+        sudo rm /usr/local/cuda/lib64/libcudnn.so                                                         
+        sudo rm /usr/local/cuda/lib64/libcudnn.so.7                                                       
+        sudo ln /usr/local/cuda/lib64/libcudnn.so.7.6.5 /usr/local/cuda/lib64/libcudnn.so.7               
+        sudo ln /usr/local/cuda/lib64/libcudnn.so.7 /usr/local/cuda/lib64/libcudnn.so                     
+Done...
+```
+
 ### GPU fan speed control
 
     $ sudo nvidia-xconfig
