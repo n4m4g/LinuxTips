@@ -61,6 +61,54 @@ and that should skip the driver install.
     
     $ sudo ldconfig
 
+### ldconfig using python3 script
+
+```
+#!/usr/bin/python3
+import os
+import re
+from glob import glob
+from subprocess import Popen, PIPE
+
+def main():
+    VERBOSE = True
+    path = '/usr/local/cuda/lib64/libcudnn.so*'
+    cudnn_files = sorted(glob(path))
+    assert len(cudnn_files) == 3
+
+    # c0: libcudnn.so
+    # c1: libcudnn.so.x
+    # c2: libcudnn.so.x.y.z
+    c0, c1, c2 = cudnn_files
+    
+    cmd1 = f"sudo rm {c0}"
+    cmd2 = f"sudo rm {c1}"
+    cmd3 = f"sudo ln {c2} {c1}"
+    cmd4 = f"sudo ln {c1} {c0}"
+    cmd5 = f"sudo ldconfig"
+
+    print("Start...")
+    for cmd in [cmd1, cmd2, cmd3, cmd4]:
+        p = Popen(cmd.split(" "), stdout=PIPE)
+        out = p.communicate()
+        if out[1] != None:
+            print(out[1])
+            assert False
+        else:
+            if VERBOSE:
+                print(f"\t{cmd}")
+
+    # check no warning from ldconfig
+    p = Popen(cmd5.split(" "), stdout=PIPE)
+    out = p.communicate()
+    assert out[0] == b''
+
+    print("Done...")
+
+if __name__ == "__main__":
+    main()
+```
+
 ### GPU fan speed control
 
     $ sudo nvidia-xconfig
