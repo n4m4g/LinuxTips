@@ -188,3 +188,4 @@ apt tools
 
     $ sudo apt install ncdu # NCurses Disk Usage
     $ sudo apt install pragha # support m4a format
+    # sudo apt install blueman # gui bluetooth manager
