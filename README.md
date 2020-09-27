@@ -66,7 +66,6 @@ and that should skip the driver install.
 ```
 #!/usr/bin/python3
 import os
-import re
 from glob import glob
 from subprocess import Popen, PIPE
 
