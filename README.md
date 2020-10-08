@@ -169,7 +169,7 @@ Add following commands to ~/.ssh/config
 git
 ---
 
-### git command alias
+### command alias
 
     git config --global user.name "<name>"
     git config --global user.email <email>
@@ -179,7 +179,10 @@ git
     git config --global alias.co checkout
     git config --global alias.br branch
     git config --list # show git config
-    
+ 
+### show tracked files
+
+    git ls-tree -r master --name-only
 
 vim
 ---
