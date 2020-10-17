@@ -11,6 +11,7 @@ Contents
 - [docker](#docker)
 - [virtualenv](#virtualenv)
 - [apt tools](#apt-tools)
+- [youtube-dl](#youtube-dl)
 
 nvidia
 ------
@@ -250,3 +251,12 @@ apt tools
     $ sudo apt install pragha # support m4a format
     $ sudo apt install blueman # gui bluetooth manager
     $ sudo apt install pavucontrol # audio fixing
+
+youtube-dl
+----------
+
+    $ sudo apt install aria2 -y
+    $ sudo snap install youtube-dl
+    $ snap run youtube-dl --no-playlist -F [url]
+    # increase download speed with arguments below
+    # --external-downloader aria2c --external-downloader-args "-x 8 -s 8 -k 1M" 
