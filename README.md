@@ -12,6 +12,8 @@ Contents
 - [virtualenv](#virtualenv)
 - [apt tools](#apt-tools)
 - [youtube-dl](#youtube-dl)
+- [awk](#awk)
+- [ps](#ps)
 
 nvidia
 ------
@@ -260,3 +262,42 @@ youtube-dl
     $ snap run youtube-dl --no-playlist -F [url]
     # increase download speed with arguments below
     # --external-downloader aria2c --external-downloader-args "-x 8 -s 8 -k 1M" 
+
+awk
+---
+
+overall memory usage  
+
+    $ free -h | awk '/^Mem:/ {print $3 "/" $2}'
+    2.6G/15G
+
+ps
+--
+
+cpu usage of processes
+
+    $ ps axch -o cmd:15,%cpu --sort=-%cpu | head
+    chrome          32.4
+    chrome          17.6
+    chrome          11.7
+    gnome-shell      7.6
+    chrome           7.2
+    chrome           2.4
+    chrome           1.6
+    Xorg             1.5
+    dbus-daemon      0.9
+    irq/31-nvidia    0.8
+    
+mem usage of processes
+
+    $ ps axch -o cmd:15,%mem --sort=-%mem | head
+    chrome           3.9
+    chrome           2.1
+    chrome           2.0
+    gnome-shell      1.9
+    chrome           1.2
+    gnome-shell      1.2
+    mysqld           1.0
+    chrome           1.0
+    gnome-software   1.0
+    chrome           0.9
