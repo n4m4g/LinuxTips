@@ -14,6 +14,7 @@ Contents
 - [youtube-dl](#youtube-dl)
 - [awk](#awk)
 - [ps](#ps)
+- [screen](#screen)
 
 nvidia
 ------
@@ -301,3 +302,18 @@ mem usage of processes
     chrome           1.0
     gnome-software   1.0
     chrome           0.9
+
+screen
+------
+
+    $ screen
+    Cannot make directory '/var/run/screen': Permission denied  
+  
+The directory /var/run/screen/ is the socket directory for screen.  
+Fortunately, screen reads a environment variable SCREENDIR to get an alternative socket directory.  
+
+    $ mkdir ~/.screen && chmod 700 ~/.screen
+
+Put this line into ~/.bashrc  
+
+    export SCREENDIR=$HOME/.screen
