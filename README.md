@@ -15,6 +15,7 @@ Contents
 - [awk](#awk)
 - [ps](#ps)
 - [screen](#screen)
+- [sed](#sed)
 
 nvidia
 ------
@@ -317,3 +318,33 @@ Fortunately, screen reads a environment variable SCREENDIR to get an alternative
 Put this line into ~/.bashrc  
 
     export SCREENDIR=$HOME/.screen
+
+sed
+---
+
+substitude
+
+    $ sed 's/http/HTTP/g' [file]
+    # replace http with HTTP in each line and printout
+    # without g mean replace once per line
+    # command above will NOT motify the file
+    
+    $ sed -i 's/http/HTTP/g' [file]
+    # -i: inplace
+    # command above will motify the file
+
+delete and print
+
+    $ sed '/http/ d' [file]
+    # delete the line has http and printout
+    
+    $ sed '/http/ p' [file]
+    # find the line has http and printout
+    
+    # sed '/^$/ d' [file]
+    # delete blank line
+    
+multiple commands
+
+    $ sed 's/http/HTTP/g;/^$/ d' [file]
+    # use ';' to concatenate commands
