@@ -196,13 +196,25 @@ vim
 
 Add follow command to ~/.vimrc
 
-    set tabstop=4
-    set shiftwidth=4
     set nu
     set hlsearch
     set smartindent
+    set splitright
+
+    set encoding=utf-8
+
+    " replace tab with space
+    set expandtab
+
+    " modify display width of tab
+    set tabstop=4
+
+    " modify display width of indent of tab
+    set shiftwidth=4
+
+    " the number of context lines 
+    " you would like to see above and below the cursor
     set scrolloff=5
-    "set expandtab
 
 terminal shortcut
 -----------------
