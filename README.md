@@ -193,6 +193,13 @@ git
 vim
 ---
 
+### Install latest vim
+
+    sudo apt purge vim -y && sudo apt autoremove -y
+    sudo add-apt-repository ppa:jonathonf/vim
+    sudo apt update
+    sudo apt install vim
+
 ### Setting
 
 Add follow command to ~/.vimrc
