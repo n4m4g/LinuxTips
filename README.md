@@ -16,6 +16,7 @@ Contents
 - [ps](#ps)
 - [screen](#screen)
 - [sed](#sed)
+- [history](#history)
 
 nvidia
 ------
@@ -360,3 +361,10 @@ multiple commands
 
     $ sed 's/http/HTTP/g;/^$/ d' [file]
     # use ';' to concatenate commands
+
+history
+-------
+
+history command with timestamp
+
+    $ export HISTTIMEFORMAT='%F %T '
