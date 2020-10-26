@@ -17,6 +17,7 @@ Contents
 - [screen](#screen)
 - [sed](#sed)
 - [history](#history)
+- [ffmpeg](#ffmpeg)
 
 nvidia
 ------
@@ -375,3 +376,12 @@ history
 history command with timestamp
 
     $ export HISTTIMEFORMAT='%F %T '
+    
+ffmpeg
+------
+
+convert m4a to mp3  
+${foo%.m4a} means remove most right .m4a found
+
+    $ for foo in *.m4a; do ffmpeg -i "$foo" -acodec libmp3lame -aq 2 "${foo%.m4a}.mp3"; done
+
