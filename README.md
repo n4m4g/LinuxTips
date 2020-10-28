@@ -18,6 +18,7 @@ Contents
 - [sed](#sed)
 - [history](#history)
 - [ffmpeg](#ffmpeg)
+- [xauth](#xauth)
 
 nvidia
 ------
@@ -385,3 +386,9 @@ ${foo%.m4a} means remove most right .m4a found
 
     $ for foo in *.m4a; do ffmpeg -i "$foo" -acodec libmp3lame -aq 2 "${foo%.m4a}.mp3"; done
 
+xauth
+-----
+
+/usr/bin/xauth:  file /home/$USER/.Xauthority does not exist
+
+    $ chown $USER:$USER -R /home/$USER/
