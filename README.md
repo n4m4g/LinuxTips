@@ -225,6 +225,10 @@ Add follow command to ~/.vimrc
     " the number of context lines 
     " you would like to see above and below the cursor
     set scrolloff=5
+    
+    nmap<C-j> <S-_>i#<Space><Esc>
+    nmap<C-k> <S-_>xx<Space><Esc>
+    vmap<C-j> <S-i>#<Space><Esc>
 
 terminal shortcut
 -----------------
