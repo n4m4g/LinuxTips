@@ -206,13 +206,14 @@ vim
 
 Add follow command to ~/.vimrc
 
-    set nu
     set hlsearch
     set smartindent
     set splitright
-
     set encoding=utf-8
 
+    " show hybrid line number
+    set number relativenumber
+    
     " replace tab with space
     set expandtab
 
