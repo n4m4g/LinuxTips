@@ -77,59 +77,44 @@ and that should skip the driver install.
 
     $ sudo ldconfig 
     /sbin/ldconfig.real: /usr/local/cuda/lib64/libcudnn.so.x is not a symbolic link
-
-    $ cd /usr/local/cuda/lib64
-    $ ls -lha libcudnn*
-
-    $ sudo rm libcudnn.so
-    $ sudo rm libcudnn.so.x
-    $ sudo ln libcudnn.so.x.y.z libcudnn.so.x
-    $ sudo ln libcudnn.so.x libcudnn.so
-    
-    $ sudo ldconfig
+    $ sudo ln -sf /usr/local/cuda/lib64/libcudnn.so.x.y.z /usr/local/cuda/lib64/libcudnn.so.x
 
 ### ldconfig using python3 script
 
 ```
 #!/usr/bin/python3
+import re
 import os
 from glob import glob
 from subprocess import Popen, PIPE
 
 def main():
-    VERBOSE = True
-    path = '/usr/local/cuda/lib64/libcudnn.so*'
-    cudnn_files = sorted(glob(path))
-    assert len(cudnn_files) == 3
 
-    # c0: libcudnn.so
-    # c1: libcudnn.so.x
-    # c2: libcudnn.so.x.y.z
-    c0, c1, c2 = cudnn_files
-    
-    cmd1 = f"sudo rm {c0}"
-    cmd2 = f"sudo rm {c1}"
-    cmd3 = f"sudo ln {c2} {c1}"
-    cmd4 = f"sudo ln {c1} {c0}"
-    cmd5 = f"sudo ldconfig"
+    # get ldconfig warning
+    cmd = "sudo ldconfig"
+    p = Popen(cmd.split(" "), stdout=PIPE, stderr=PIPE)
+    out, err = p.communicate()
+    err = err.decode('utf-8')
 
-    print("Start...")
-    for cmd in [cmd1, cmd2, cmd3, cmd4]:
-        p = Popen(cmd.split(" "), stdout=PIPE)
-        out = p.communicate()
-        if out[1] != None:
-            print(out[1])
-            assert False
-        else:
-            if VERBOSE:
-                print(f"\t{cmd}")
+    # /sbin/ldconfig.real: /usr/local/cuda-10.1/targets/x86_64-linux/lib/libcudnn_ops_train.so.8 is not a symbolic link
+    files = re.findall(r'/sbin/ldconfig.real: (.*) is not a symbolic link', err)
 
-    # check no warning from ldconfig
-    p = Popen(cmd5.split(" "), stdout=PIPE)
-    out = p.communicate()
-    assert out[0] == b''
+    if files == []:
+        print("ldconfig is clean")
+    else:
+        print(f"Found {files}, bulid soft link for each file")
+        for f in files:
+            if not os.path.exists(f):
+                print(f'Failed parsing: {f}')
+                assert False
+            tmp_f = glob(f+".*.*")[0]
+            if not os.path.exists(tmp_f):
+                assert False
+            cmd = f"sudo ln -sf {tmp_f} {f}"
+            print(cmd)
+            p = Popen(cmd.split(" "), stdout=PIPE, stderr=PIPE)
 
-    print("Done...")
+        print('Done')
 
 if __name__ == "__main__":
     main()
