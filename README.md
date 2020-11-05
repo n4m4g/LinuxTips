@@ -24,6 +24,10 @@ Contents
 tensorflow
 ----------
 
+tensorflow-gpu==2.3.1  
+cuda==10.1  
+cudnn==7.6.5  
+
 ### Install tensorflow-gpu
 
     $ pip install tensorflow-gpu
