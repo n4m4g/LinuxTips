@@ -24,6 +24,8 @@ Contents
 tensorflow
 ----------
 
+<a href="https://www.tensorflow.org/install/source#tested_build_configurations">Official compatible table</a>  
+
 tensorflow-gpu==2.3.1  
 cuda==10.1  
 cudnn==7.6.5  
