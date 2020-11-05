@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [tensorflow](#tensorflow)
 - [nvidia](#nvidia)
 - [ssh](#ssh)
 - [git](#git)
@@ -20,6 +21,23 @@ Contents
 - [ffmpeg](#ffmpeg)
 - [xauth](#xauth)
 
+tensorflow
+----------
+
+### Install tensorflow-gpu
+
+    $ pip install tensorflow-gpu
+ 
+### Check require cuda version
+
+```
+>>> import tensorflow as tf
+2020-11-05 10:42:50.498229: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory
+2020-11-05 10:42:50.498262: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+>>>
+```
+Warnings that "Could not load dynamic library 'libcudart.so.10.1'" means require cuda version 10.1
+
 nvidia
 ------
     
@@ -32,7 +50,7 @@ nvidia
 
 ### cuda
 
-if you are going to install using the deb installer (which is what was installing 387 driver etc.) then you could just do:
+if you are going to install using the deb installer then you could just do:
 
 ```
 sudo apt-get install cuda-toolkit-X-Y
@@ -46,8 +64,9 @@ sudo apt-get install cuda
 
 and that should skip the driver install.
 
-
 ### cudnn
+
+<a href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-linux">Installation Guide</a>
 
     $ tar -xzvf cudnn-*.tgz
     $ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
