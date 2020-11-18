@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [remove efi partition](#remove-efi-partition)
 - [tensorflow](#tensorflow)
 - [nvidia](#nvidia)
 - [ssh](#ssh)
@@ -20,6 +21,74 @@ Contents
 - [history](#history)
 - [ffmpeg](#ffmpeg)
 - [xauth](#xauth)
+
+remove efi partition
+--------------------
+
+1. run diskpart as administrator  
+    
+    diskpart
+    
+2. show drives
+
+    list disk
+    
+3. select disk that hosts windows OS
+
+    sel disk #
+    
+4. list volumes
+
+    list vol
+    
+5. select volumne with filesystem FAT32
+
+    sel vol #
+    
+6. assign a letter to selected volume
+
+    assign letter=Z:
+
+7. exit diskpart
+
+    exit
+    
+8. cd select volume
+
+    Z:
+
+9. move to EFI directory
+
+    cd EFI
+    
+10. show entries and remove ubuntu directory
+
+    dir  
+    rmdir /S ubuntu
+
+11. run diskpart as administrator  
+    
+    diskpart
+    
+12. show drives
+
+    list disk
+    
+13. select disk that hosts windows OS
+
+    sel disk #
+    
+14. list volumes
+
+    list vol
+    
+15. select volumne with filesystem FAT32
+
+    sel vol #
+    
+16. remove letter
+
+    remove letter=Z:
 
 tensorflow
 ----------
