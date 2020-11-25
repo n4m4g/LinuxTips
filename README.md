@@ -28,7 +28,8 @@ bashrc
 
 ```
 # alias
-alias tb="tensorboard --logdir=runs/$(ls -tr runs/ | awk 'END { print }')"
+PLOTS=`[[ -d ./runs ]] && ls -tr ./runs | awk 'END { print }'`
+alias tb="tensorboard --logdir=runs/$PLOTS --port "
 alias cp="rsync -aP --info=progress2 "
 # export
 export PATH='/usr/local/cuda/bin':$PATH
