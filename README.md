@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [bashrc](#bashrc)
 - [remove efi partition](#remove-efi-partition)
 - [tensorflow](#tensorflow)
 - [nvidia](#nvidia)
@@ -21,6 +22,18 @@ Contents
 - [history](#history)
 - [ffmpeg](#ffmpeg)
 - [xauth](#xauth)
+
+bashrc
+------
+
+```
+# alias
+alias tb="tensorboard --logdir=runs/$(ls -tr runs/ | awk 'END { print }')"
+alias cp="rsync -aP --info=progress2 "
+# export
+export PATH='/usr/local/cuda/bin':$PATH
+export LD_LIBRARY_PATH='/usr/local/cuda/lib64':$LD_LIBRARY_PATH
+```
 
 remove efi partition
 --------------------
