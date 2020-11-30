@@ -386,11 +386,15 @@ apt tools
 youtube-dl
 ----------
 
-    $ sudo apt install aria2 -y
-    $ sudo snap install youtube-dl
-    $ snap run youtube-dl --no-playlist -F [url]
+### Download
+
+    pip install youtube-dl
     # increase download speed with arguments below
     # --external-downloader aria2c --external-downloader-args "-x 8 -s 8 -k 1M" 
+    
+### Config
+
+    echo "-f 'bestvideo[height<=1440]+bestaudio[ext=m4a]'" >> ~/.config/youtube-dl/config
 
 awk
 ---
