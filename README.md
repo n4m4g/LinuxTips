@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [parallel](#parallel)
 - [bashrc](#bashrc)
 - [remove efi partition](#remove-efi-partition)
 - [tensorflow](#tensorflow)
@@ -23,6 +24,21 @@ Contents
 - [ffmpeg](#ffmpeg)
 - [xauth](#xauth)
 
+parallel
+--------
+
+Running 4 cmds with args simultaneously
+
+    parallel -j 4 [cmd] [args] < data.txt
+
+For example
+
+    parallel -j 4 youtube-dl {} < url.txt  
+    
+    or  
+    
+    cat url.txt | parallel -j 4 youtube-dl {}
+    
 bashrc
 ------
 
