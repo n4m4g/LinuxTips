@@ -530,3 +530,12 @@ memory=8GB
 swap=0
 localhostForwarding=true
 ```
+  
+
+Open linux home directory in windows explorer <a href="https://docs.microsoft.com/zh-tw/windows/wsl/compare-versions">[link]</a>  
+
+```
+# In wsl2
+cd
+powershell.exe /c start .
+```
