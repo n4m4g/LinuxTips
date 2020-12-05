@@ -23,6 +23,7 @@ Contents
 - [history](#history)
 - [ffmpeg](#ffmpeg)
 - [xauth](#xauth)
+- [wsl2 mem](#wsl2-mem)
 
 parallel
 --------
@@ -517,3 +518,15 @@ xauth
 /usr/bin/xauth:  file /home/$USER/.Xauthority does not exist
 
     $ chown $USER:$USER -R /home/$USER/
+
+wsl2 mem
+--------
+
+Limit memory assigned to WSL2 VM
+
+```
+[wsl2]
+memory=8GB
+swap=0
+localhostForwarding=true
+```
