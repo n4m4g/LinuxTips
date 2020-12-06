@@ -24,6 +24,7 @@ Contents
 - [ffmpeg](#ffmpeg)
 - [xauth](#xauth)
 - [wsl2 mem](#wsl2-mem)
+- [Set up working X11 forwarding on WSL2](#Set-up-working-X11-forwarding-on-WSL2)
 
 parallel
 --------
@@ -539,3 +540,38 @@ Open linux home directory in windows explorer <a href="https://docs.microsoft.co
 cd
 powershell.exe /c start .
 ```
+
+Set up working X11 forwarding on WSL2
+-------------------------------------
+
+<a href="https://stackoverflow.com/questions/61110603/how-to-set-up-working-x11-forwarding-on-wsl2">ref1</a>
+<a href="https://github.com/cascadium/wsl-windows-toolbar-launcher#firewall-rules">ref2</a>
+
+1. Install <a href="https://sourceforge.net/projects/vcxsrv/">VcXsrv Windows X Server</a>  
+
+    - At Extra settings, enable public access for your X server by clicking "Disabling Access Control"  
+
+    - When "Windows Security Alert" pop up, only select "Private networks, ..."  
+
+2. Setup Windows Defender Firewall rules
+
+    - Search "Windows Defender Firewall"
+    
+    - Advanced settings
+    
+    - Inbound Rules and disabling block rule for TCP on the Public Network.
+    
+    - New Rule..., select TCP port 6000 and select defaults
+    
+    - Refresh and scroll to the recently created name, right click and go to properties
+    
+    - Scope, go to Remote IP address, Select These IP addresses and add in 172.16.0.0/12
+
+3. Add the following to your ~/.bashrc
+
+```
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+export LIBGL_ALWAYS_INDIRECT=1
+```
+
+4. Restart wsl2
