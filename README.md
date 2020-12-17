@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [chromium](#chromium)
 - [parallel](#parallel)
 - [bashrc](#bashrc)
 - [remove efi partition](#remove-efi-partition)
@@ -24,7 +25,30 @@ Contents
 - [ffmpeg](#ffmpeg)
 - [xauth](#xauth)
 - [wsl2 mem](#wsl2-mem)
-- [Set up working X11 forwarding on WSL2](#Set-up-working-X11-forwarding-on-WSL2)
+- [X11 forwarding on WSL2](#X11-forwarding-on-WSL2)
+
+
+chromium
+--------
+
+Hardware acceleration
+
+1. Follow the <a href="https://www.linuxuprising.com/2018/08/how-to-enable-hardware-accelerated.html?m=1&fbclid=IwAR0-2Nne7eDA4393Z5W4rz9mHOMp8DeZ8AMhQJEPBM1gBatMNLVe6FgeOaM">How To Enable Hardware Acceleration In Chromium On Ubuntu Or Linux Mint (VA-API Patched PPA Builds)</a>  
+
+    The tutorial will guide you install VA-API Patched Chromium
+
+2. chrome://flags  
+
+3. Enable follow settings
+    - Hardware-accelerated video decode
+    - Override software rendering list
+    - GPU rasterization
+    - Out of process rasterization using DDLs
+    - Zero-copy rasterizer
+    
+4. In terminal
+
+    chromium --use-gl=desktop &
 
 parallel
 --------
@@ -541,8 +565,8 @@ cd
 powershell.exe /c start .
 ```
 
-Set up working X11 forwarding on WSL2
--------------------------------------
+X11 forwarding on WSL2
+----------------------
 
 <a href="https://stackoverflow.com/questions/61110603/how-to-set-up-working-x11-forwarding-on-wsl2">ref1</a>
 <a href="https://github.com/cascadium/wsl-windows-toolbar-launcher#firewall-rules">ref2</a>
