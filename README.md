@@ -50,6 +50,10 @@ Hardware acceleration
 
     chromium --use-gl=desktop &
 
+Reference
+
+1. <a href="https://github.com/xtknight/vdpau-va-driver-vp9?fbclid=IwAR2jI9ZlG3MwC158pY8AgJX17ZPPrGpCicXhK18wXI0gLJmWYW6XF68w3Ro">vdpau-va-driver-vp9</a>
+
 parallel
 --------
 
