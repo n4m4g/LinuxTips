@@ -69,6 +69,10 @@ For example
     
     cat url.txt | parallel -j 4 youtube-dl {}
     
+Convert audio to mp3
+
+    find . -name '*.m4a' | parallel '[ ! -f {.}.mp3 ] && ffmpeg -i {} -acodec libmp3lame -aq 2 {.}.mp3'
+    
 bashrc
 ------
 
