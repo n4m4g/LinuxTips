@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [ethtool](#ethtool)
 - [chromium](#chromium)
 - [parallel](#parallel)
 - [bashrc](#bashrc)
@@ -26,6 +27,20 @@ Contents
 - [xauth](#xauth)
 - [wsl2 mem](#wsl2-mem)
 - [X11 forwarding on WSL2](#X11-forwarding-on-WSL2)
+
+ethtool
+-------
+
+Ethernet interface eth0 is not at 1000Mbps. It is at 100 Mbps
+
+    # get devname
+    ip a
+    
+    # check ethernet status
+    ethtool [devname]
+
+    # set speed and duplex
+    ethtool -s [devname] speed 1000 duplex full
 
 
 chromium
