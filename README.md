@@ -431,6 +431,10 @@ docker
     $ docker exec -it <container id> bash
     $ docker exec -it c357 bash
 
+### Remove "none" docker image
+
+    $ docker rmi -f $(docker images --filter "dangling=true" -q)
+    
 virtualenv
 ----------
 
