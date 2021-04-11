@@ -578,9 +578,12 @@ wsl2 mem
 
 Limit memory assigned to WSL2 VM
 
+    wsl --shutdown
+    notepad "$env:USERPROFILE/.wslconfig"
+
 ```
 [wsl2]
-memory=8GB
+memory=4GB
 swap=0
 localhostForwarding=true
 ```
