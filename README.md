@@ -62,6 +62,24 @@ bash shell script
     $ echo {15.5*3} | bc  
     46.5
 
+4. ${} for string substitute
+    
+    $ version=\`uname -r\`  
+    5.4.0-72-generic
+    
+    get length of string  
+    $ echo ${#version}  
+    16
+    
+    slicing, first number is start index, second number is amount to slice.  
+    $ echo ${version: 0:3}  
+    5.4
+
+    If second number is negative, the second number is the end index.  
+    $ echo ${version: 3:-3}  
+    .0-72-gene
+    
+
 
 ethtool
 -------
