@@ -45,7 +45,7 @@ bash shell script
     $ echo $version  
     5.4.0-72-generic
 
-    $ version=`uname -r`  
+    $ version=\`uname -r\`  
     $ echo $version  
     5.4.0-72-generic
 
