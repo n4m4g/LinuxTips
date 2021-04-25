@@ -38,28 +38,28 @@ bash shell script
     $ means the variable  
     $() means run the command and return the result  
 
-    $ uname -r
+    $ uname -r  
     5.4.0-72-generic
 
-    $ version=$(uname -r)
-    $ echo $version
+    $ version=$(uname -r)  
+    $ echo $version  
     5.4.0-72-generic
 
-    $ version=`uname -r`
-    $ echo $version
+    $ version=`uname -r`  
+    $ echo $version  
     5.4.0-72-generic
 
 2. ${} could remove or substitute the string in the variable
 
-    $ echo ${version}
+    $ echo ${version}  
     5.4.0-72-generic
 
 3. $(()) could calculate integer operation
 
-    $ echo $((15*3))
+    $ echo $((15*3))  
     45
 
-    $ echo {15.5*3} | bc
+    $ echo {15.5*3} | bc  
     46.5
 
 
