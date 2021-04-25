@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [batch shell script](#bash-shell-script)
 - [ethtool](#ethtool)
 - [chromium](#chromium)
 - [parallel](#parallel)
@@ -27,6 +28,40 @@ Contents
 - [xauth](#xauth)
 - [wsl2 mem](#wsl2-mem)
 - [X11 forwarding on WSL2](#X11-forwarding-on-WSL2)
+
+bash shell script
+-----------------
+
+1. $()
+
+    () means the start and end of the sub-shell  
+    $ means the variable  
+    $() means run the command and return the result  
+
+    $ uname -r
+    5.4.0-72-generic
+
+    $ version=$(uname -r)
+    $ echo $version
+    5.4.0-72-generic
+
+    $ version=`uname -r`
+    $ echo $version
+    5.4.0-72-generic
+
+2. ${} could remove or substitute the string in the variable
+
+    $ echo ${version}
+    5.4.0-72-generic
+
+3. $(()) could calculate integer operation
+
+    $ echo $((15*3))
+    45
+
+    $ echo {15.5*3} | bc
+    46.5
+
 
 ethtool
 -------
