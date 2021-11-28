@@ -4,13 +4,8 @@ Linux tips
 Contents
 --------
 - [batch shell script](#bash-shell-script)
-- [ethtool](#ethtool)
-- [chromium](#chromium)
 - [parallel](#parallel)
-- [bashrc](#bashrc)
 - [remove efi partition](#remove-efi-partition)
-- [tensorflow](#tensorflow)
-- [nvidia](#nvidia)
 - [ssh](#ssh)
 - [git](#git)
 - [vim](#vim)
@@ -78,49 +73,6 @@ bash shell script
     If second number is negative, the second number is the end index.  
     $ echo ${version: 3:-3}  
     .0-72-gene
-    
-
-
-ethtool
--------
-
-Ethernet interface eth0 is not at 1000Mbps. It is at 100 Mbps
-
-    # get devname
-    ip a
-    
-    # check ethernet status
-    ethtool [devname]
-
-    # set speed and duplex
-    ethtool -s [devname] speed 1000 duplex full
-
-
-chromium
---------
-
-Hardware acceleration
-
-1. Follow the <a href="https://www.linuxuprising.com/2018/08/how-to-enable-hardware-accelerated.html?m=1&fbclid=IwAR0-2Nne7eDA4393Z5W4rz9mHOMp8DeZ8AMhQJEPBM1gBatMNLVe6FgeOaM">How To Enable Hardware Acceleration In Chromium On Ubuntu Or Linux Mint (VA-API Patched PPA Builds)</a>  
-
-    The tutorial will guide you install VA-API Patched Chromium
-
-2. chrome://flags  
-
-3. Enable follow settings
-    - Hardware-accelerated video decode
-    - Override software rendering list
-    - GPU rasterization
-    - Out of process rasterization using DDLs
-    - Zero-copy rasterizer
-    
-4. In terminal
-
-    chromium --use-gl=desktop &
-
-Reference
-
-1. <a href="https://github.com/xtknight/vdpau-va-driver-vp9?fbclid=IwAR2jI9ZlG3MwC158pY8AgJX17ZPPrGpCicXhK18wXI0gLJmWYW6XF68w3Ro">vdpau-va-driver-vp9</a>
 
 parallel
 --------
@@ -140,19 +92,6 @@ For example
 Convert audio to mp3
 
     find . -name '*.m4a' | parallel '[ ! -f {.}.mp3 ] && ffmpeg -i {} -acodec libmp3lame -aq 2 {.}.mp3'
-    
-bashrc
-------
-
-```
-# alias
-PLOTS=`[[ -d ./runs ]] && ls -tr ./runs | awk 'END { print }'`
-alias tb="tensorboard --logdir=runs/$PLOTS --port "
-alias cp="rsync -aP --info=progress2 "
-# export
-export PATH='/usr/local/cuda/bin':$PATH
-export LD_LIBRARY_PATH='/usr/local/cuda/lib64':$LD_LIBRARY_PATH
-```
 
 remove efi partition
 --------------------
@@ -222,136 +161,6 @@ remove efi partition
 
     remove letter=Z:
 
-tensorflow
-----------
-
-<a href="https://www.tensorflow.org/install/source#tested_build_configurations">Official compatible table</a>  
-
-tensorflow-gpu==2.3.1  
-cuda==10.1  
-cudnn==7.6.5  
-
-### Install tensorflow-gpu
-
-    $ pip install tensorflow-gpu
- 
-### Check require cuda version
-
-```
->>> import tensorflow as tf
-2020-11-05 10:42:50.498229: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory
-2020-11-05 10:42:50.498262: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
->>>
-```
-Warnings that "Could not load dynamic library 'libcudart.so.10.1'" means require cuda version 10.1
-
-nvidia
-------
-    
-### Remove nvidia driver
-
-    $ sudo apt purge nvidia*
-    $ sudo apt purge libnvidia*
-    $ dpkg -l | grep -i nvidia | awk '{print $2}' | xargs sudo dpkg -r
-    $ sudo reboot
-
-### cuda
-
-if you are going to install using the deb installer then you could just do:
-
-```
-sudo apt-get install cuda-toolkit-X-Y
-```
-
-instead of
-
-```
-sudo apt-get install cuda
-```
-
-and that should skip the driver install.
-
-### cudnn
-
-<a href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-linux">Installation Guide</a>
-
-    $ tar -xzvf cudnn-*.tgz
-    $ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
-    $ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
-    $ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
-
-### environment variable setting
-
-Add follow lines to ~/.bashrc
-
-    export  PATH='/usr/local/cuda/bin':$PATH
-    export  LD_LIBRARY_PATH='/usr/local/cuda/lib64':$LD_LIBRARY_PATH
-
-### ldconfig
-
-    $ sudo ldconfig 
-    /sbin/ldconfig.real: /usr/local/cuda/lib64/libcudnn.so.x is not a symbolic link
-    $ sudo ln -sf /usr/local/cuda/lib64/libcudnn.so.x.y.z /usr/local/cuda/lib64/libcudnn.so.x
-
-### ldconfig using python3 script
-
-```
-#!/usr/bin/python3
-import re
-import os
-from glob import glob
-from subprocess import Popen, PIPE
-
-def main():
-
-    # get ldconfig warning
-    cmd = "sudo ldconfig"
-    p = Popen(cmd.split(" "), stdout=PIPE, stderr=PIPE)
-    out, err = p.communicate()
-    err = err.decode('utf-8')
-
-    # /sbin/ldconfig.real: /usr/local/cuda-10.1/targets/x86_64-linux/lib/libcudnn_ops_train.so.8 is not a symbolic link
-    files = re.findall(r'/sbin/ldconfig.real: (.*) is not a symbolic link', err)
-
-    if files == []:
-        print("ldconfig is clean")
-    else:
-        print(f"Found {files}, bulid soft link for each file")
-        for f in files:
-            if not os.path.exists(f):
-                print(f'Failed parsing: {f}')
-                assert False
-            tmp_f = glob(f+".*.*")[0]
-            if not os.path.exists(tmp_f):
-                assert False
-            cmd = f"sudo ln -sf {tmp_f} {f}"
-            print(cmd)
-            p = Popen(cmd.split(" "), stdout=PIPE, stderr=PIPE)
-
-        print('Done')
-
-if __name__ == "__main__":
-    main()
-```
-
-Example output
-```
-Start...                                                                                                  
-        sudo rm /usr/local/cuda/lib64/libcudnn.so                                                         
-        sudo rm /usr/local/cuda/lib64/libcudnn.so.7                                                       
-        sudo ln /usr/local/cuda/lib64/libcudnn.so.7.6.5 /usr/local/cuda/lib64/libcudnn.so.7               
-        sudo ln /usr/local/cuda/lib64/libcudnn.so.7 /usr/local/cuda/lib64/libcudnn.so                     
-Done...
-```
-
-### GPU fan speed control
-
-    $ sudo nvidia-xconfig
-    $ sudo nvidia-xconfig --cool-bits=28
-    
-    Restart the computer and search for NVIDIA X Server Settings in the Dash. 
-    There should be an option to change fan speed under Thermal Settings.
-
 ssh
 ---
 
@@ -397,8 +206,8 @@ git
 
 ### command alias
 
-    git config --global user.name "<name>"
-    git config --global user.email <email>
+    git config --global user.name [name]
+    git config --global user.email [email]
     git config --global core.editor vim
     git config --global alias.ci commit
     git config --global alias.st status
