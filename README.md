@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [find](#find)
 - [batch shell script](#bash-shell-script)
 - [parallel](#parallel)
 - [remove efi partition](#remove-efi-partition)
@@ -23,6 +24,21 @@ Contents
 - [xauth](#xauth)
 - [wsl2 mem](#wsl2-mem)
 - [X11 forwarding on WSL2](#X11-forwarding-on-WSL2)
+
+find
+----
+Find exec multiple commands syntaxes <a href="https://www.howtouselinux.com/post/linux-find-exec-examples-advanced-part">[link]</a>
+
+```
+find [path] -type f -exec [cmd] {} \;
+
+# cmd result0; cmd result1 ; ...
+
+find [path] -type f -exec [cmd] {} \+
+
+# cmd result0 result1 ... ;
+```
+
 
 bash shell script
 -----------------
