@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [sed](#sed)
 - [unzip](#unzip)
 - [grep](#grep)
 - [find](#find)
@@ -26,6 +27,14 @@ Contents
 - [xauth](#xauth)
 - [wsl2 mem](#wsl2-mem)
 - [X11 forwarding on WSL2](#X11-forwarding-on-WSL2)
+
+[sed]
+-----
+& is the placeholder for the match
+```
+sed 's/pat/\"&\"/' [file]
+# pat -> "pat"
+```
 
 [unzip]
 -------
