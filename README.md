@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [grep](#grep)
 - [find](#find)
 - [batch shell script](#bash-shell-script)
 - [parallel](#parallel)
@@ -25,6 +26,21 @@ Contents
 - [wsl2 mem](#wsl2-mem)
 - [X11 forwarding on WSL2](#X11-forwarding-on-WSL2)
 
+grep
+----
+Grep OR / Grep AND / Grep NOT <a href="https://www.thegeekstuff.com/2011/10/grep-or-and-not-operators/">[link]</a>
+
+```
+# Grep OR
+grep -E "pat1|pat2" [file]
+
+# Grep AND
+grep -E "pat1.*pat2|pat2.*pat1" [file]
+
+# Grep NOT
+grep -v "pat1" [file]
+```
+
 find
 ----
 Find exec multiple commands syntaxes <a href="https://www.howtouselinux.com/post/linux-find-exec-examples-advanced-part">[link]</a>
@@ -38,7 +54,6 @@ find [path] -type f -exec [cmd] {} \+
 
 # cmd result0 result1 ... ;
 ```
-
 
 bash shell script
 -----------------
