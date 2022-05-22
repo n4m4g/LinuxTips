@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [unzip](#unzip)
 - [grep](#grep)
 - [find](#find)
 - [batch shell script](#bash-shell-script)
@@ -25,6 +26,15 @@ Contents
 - [xauth](#xauth)
 - [wsl2 mem](#wsl2-mem)
 - [X11 forwarding on WSL2](#X11-forwarding-on-WSL2)
+
+[unzip]
+-------
+Decompressing multiple files at once  
+<a href="https://askubuntu.com/questions/431478/decompressing-multiple-files-at-once">link</a>
+```
+# search *.zip at current directory, unzip the .zip only 10 parallel processes at a time
+find . -maxdepth 1 -name '*.zip' -print0 | xargs -0 -I {} -P 10 unzip {}
+```
 
 grep
 ----
