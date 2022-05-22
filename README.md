@@ -28,30 +28,71 @@ Contents
 
 grep
 ----
-Grep OR / Grep AND / Grep NOT <a href="https://www.thegeekstuff.com/2011/10/grep-or-and-not-operators/">[link]</a>
+<a href="https://www.thegeekstuff.com/2011/10/grep-or-and-not-operators/">link0</a> /
+<a href="https://www.thegeekstuff.com/2011/01/advanced-regular-expressions-in-grep-command-with-10-examples-%E2%80%93-part-ii/">link1</a>
 
+Grep OR / Grep AND / Grep NOT
 ```
-# Grep OR
-grep -E "pat1|pat2" [file]
+- Grep OR
+grep "pat1\|pat2" [file]
+or
+grep -e "pat1" -e "pat2" [file]
 
-# Grep AND
-grep -E "pat1.*pat2|pat2.*pat1" [file]
+- Grep AND
+grep "pat1.*pat2\|pat2.*pat1" [file]
 
-# Grep NOT
+- Grep NOT
 grep -v "pat1" [file]
+```
+
+Character class expression
+```
+[[:digit:]] -> [0-9]
+[[:alnum:]] -> [0-9A-Za-z]
+[[:alpha:]] -> [A-Za-z]
+[[:blank:]] -> [space or tab]
+
+grep "[[:digit:]]\+" [file]
+```
+
+Match occurences
+```
+- M to N occurences ({m,n})
+grep "pat1\{m,n\}" [file]
+
+- Exact M occurence ({m})
+grep "pat1\{m\}" [file]
+
+- M or more occurences ({m,})
+grep "pat1\{m,\}" [file]
+```
+Word boundary (\b)
+```
+grep "\bpat1\b" [file]
+```
+
+Displaying lines before/after/around the match using grep -A, -B and -C
+```
+grep -A m "pat1" [file]
+# show m lines after match
+
+grep -B m "pat1" [file]
+# show m lines before match
+
+grep -C m "pat1" [file]
+# show m lines before & after match
 ```
 
 find
 ----
-Find exec multiple commands syntaxes <a href="https://www.howtouselinux.com/post/linux-find-exec-examples-advanced-part">[link]</a>
+Find exec multiple commands syntaxes  
+<a href="https://www.howtouselinux.com/post/linux-find-exec-examples-advanced-part">link</a>
 
 ```
-find [path] -type f -exec [cmd] {} \;
-
+- find [path] -type f -exec [cmd] {} \;
 # cmd result0; cmd result1 ; ...
 
-find [path] -type f -exec [cmd] {} \+
-
+- find [path] -type f -exec [cmd] {} \+
 # cmd result0 result1 ... ;
 ```
 
