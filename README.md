@@ -3,7 +3,7 @@ Linux tips
 
 Contents
 --------
-- [bash array](#bash_array)
+- [bash array](#bash-array)
 - [sed](#sed)
 - [unzip](#unzip)
 - [grep](#grep)
