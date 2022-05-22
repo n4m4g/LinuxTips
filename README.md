@@ -34,7 +34,8 @@ bash array
 Append element to array  
 Elements in double quote is treat as an element in for loop  
 <a href="https://linuxhint.com/bash_append_array/">link0</a> /
-<a href="https://www.cyberciti.biz/faq/bash-for-loop-array/">link1</a>
+<a href="https://www.cyberciti.biz/faq/bash-for-loop-array/">link1</a> /
+<a href="https://stackoverflow.com/questions/18383291/loop-over-set-of-strings-containing-spaces">link2</a>
 ```
 x="a b"
 y="c d"
