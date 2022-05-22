@@ -37,6 +37,7 @@ Elements in double quote is treat as an element in for loop
 ```
 x="a b"
 y="c d"
+arr=()
 arr+=("$x" "$y")
 for i in "${arr[@]}"
 do
@@ -50,6 +51,24 @@ done
 Show length of array
 ```
 echo "${#arr[@]}"
+```
+
+iterate array
+```
+for i in "${arr[@]}"
+do
+  echo "$i"
+done
+```
+
+iterate array by index
+```
+for (( idx=0; idx<"${#arr[@]}"; idx++ ))
+do
+  echo "$idx, ${arr[$idx]}"
+  or
+  printf "%d, %s\n" "$idx" "${arr[$idx]}"
+done
 ```
 
 sed
