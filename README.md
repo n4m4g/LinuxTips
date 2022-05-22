@@ -3,6 +3,7 @@ Linux tips
 
 Contents
 --------
+- [bash array](#bash_array)
 - [sed](#sed)
 - [unzip](#unzip)
 - [grep](#grep)
@@ -28,8 +29,31 @@ Contents
 - [wsl2 mem](#wsl2-mem)
 - [X11 forwarding on WSL2](#X11-forwarding-on-WSL2)
 
-[sed]
------
+bash array
+----------
+Append element to array  
+Elements in double quote is treat as an element in for loop  
+<a href="https://linuxhint.com/bash_append_array/">link</a>
+```
+x="a b"
+y="c d"
+arr+=("$x" "$y")
+for i in "${arr[@]}"
+do
+  echo "$i"
+done
+
+# a b
+# c d
+```
+
+Show length of array
+```
+echo "${#arr[@]}"
+```
+
+sed
+---
 & is the placeholder for the match  
 <a href="https://askubuntu.com/questions/76808/how-do-i-use-variables-in-a-sed-command">link</a>
 ```
@@ -37,8 +61,8 @@ sed 's/pat/\"&\"/' [file]
 # pat -> "pat"
 ```
 
-[unzip]
--------
+unzip
+-----
 Decompressing multiple files at once  
 <a href="https://askubuntu.com/questions/431478/decompressing-multiple-files-at-once">link</a>
 ```
