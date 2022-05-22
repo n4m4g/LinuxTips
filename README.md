@@ -30,7 +30,8 @@ Contents
 
 [sed]
 -----
-& is the placeholder for the match
+& is the placeholder for the match  
+<a href="https://askubuntu.com/questions/76808/how-do-i-use-variables-in-a-sed-command">link</a>
 ```
 sed 's/pat/\"&\"/' [file]
 # pat -> "pat"
