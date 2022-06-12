@@ -411,6 +411,10 @@ Add follow command to ~/.vimrc
     nmap<C-k> <S-_>xx<Space><Esc>
     vmap<C-j> <S-i>#<Space><Esc>
 
+### Change case
+
+Visual select the text, then U for uppercase or u for lowercase
+
 terminal shortcut
 -----------------
 
